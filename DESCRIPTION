@@ -1,9 +1,13 @@
 Package: rcapstone
-Title: What the Package Does (one line, title case)
+Title: Provides Access to NOAA Significant Earthquakes Database
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Niklaas", "Baudet von Gersdorff", email = "me@niklaas.eu", role = c("aut", "cre"))
+Description:
+    The package is developed as part of a Coursera capstone project on software
+    development in R. It provides an API to the NOAA Significant Earthquakes
+    Database (https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&s=1&d=1)
+    including processing and visualising the data.
 Depends: R (>= 3.4.2)
-License: What license is it under?
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
