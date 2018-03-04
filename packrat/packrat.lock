@@ -1,0 +1,18 @@
+PackratFormat: 1.4
+PackratVersion: 0.4.8.57
+RVersion: 3.4.2
+Repos: CRAN=https://cloud.r-project.org,
+    CRANextra=http://www.stats.ox.ac.uk/pub/RWin
+
+Package: packrat
+Source: github
+Version: 0.4.8-57
+GithubRepo: packrat
+GithubUsername: rstudio
+GithubRef: master
+GithubSha1: 474fea70a977454ae4e9186468f4f1c5676603e0
+RemoteHost: https://api.github.com
+RemoteRepo: packrat
+RemoteUsername: rstudio
+RemoteSha: 474fea70a977454ae4e9186468f4f1c5676603e0
+Hash: 26a63c6e4f036aca04f3b09c673ff01c
