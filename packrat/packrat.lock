@@ -1,6 +1,6 @@
 PackratFormat: 1.4
 PackratVersion: 0.4.8.57
-RVersion: 3.4.2
+RVersion: 3.4.3
 Repos: CRAN=https://cloud.r-project.org,
     CRANextra=http://www.stats.ox.ac.uk/pub/RWin
 
@@ -13,6 +13,11 @@ Package: R6
 Source: CRAN
 Version: 2.2.2
 Hash: b2366cd9d2f3851a5704b4e192b985c2
+
+Package: RColorBrewer
+Source: CRAN
+Version: 1.1-2
+Hash: c0d56cd15034f395874c870141870c25
 
 Package: Rcpp
 Source: CRAN
@@ -27,10 +32,6 @@ GithubRepo: assertthat
 GithubUsername: hadley
 GithubRef: master
 GithubSha1: 37f0a56e94a10b8d0280fdabc08ffc1d6adbe1ee
-RemoteHost: https://api.github.com
-RemoteRepo: assertthat
-RemoteUsername: hadley
-RemoteSha: 37f0a56e94a10b8d0280fdabc08ffc1d6adbe1ee
 
 Package: backports
 Source: CRAN
@@ -69,6 +70,11 @@ Source: CRAN
 Version: 1.2.0
 Hash: a76a309884277a4fd8a5d741965fbef5
 
+Package: colorspace
+Source: CRAN
+Version: 1.3-2
+Hash: 0bf8618b585fa98eb23414cd3ab95118
+
 Package: commonmark
 Source: CRAN
 Version: 1.4
@@ -97,6 +103,11 @@ Hash: 80061b2ad6853fd3665bf883123a1b1a
 Requires: digest, git2r, httr, jsonlite, memoise, rstudioapi, whisker,
     withr
 
+Package: dichromat
+Source: CRAN
+Version: 2.0-0
+Hash: 08eed0c80510af29bb15f840ccfe37ce
+
 Package: digest
 Source: CRAN
 Version: 0.6.15
@@ -124,10 +135,12 @@ GithubRepo: fs
 GithubUsername: r-lib
 GithubRef: master
 GithubSha1: 0d386610c74caf855423667ec50af2d28b1347d2
-RemoteHost: https://api.github.com
-RemoteRepo: fs
-RemoteUsername: r-lib
-RemoteSha: 0d386610c74caf855423667ec50af2d28b1347d2
+
+Package: ggplot2
+Source: CRAN
+Version: 2.2.1
+Hash: 46e5cb78836848aa44655e577433f54b
+Requires: digest, gtable, lazyeval, plyr, reshape2, scales, tibble
 
 Package: gh
 Source: CRAN
@@ -144,6 +157,11 @@ Package: glue
 Source: CRAN
 Version: 1.2.0
 Hash: 381e42baedecc633c0e547a0c7ca9de7
+
+Package: gtable
+Source: CRAN
+Version: 0.2.0
+Hash: cd78381a9d3fea966ac39bd0daaf5554
 
 Package: highr
 Source: CRAN
@@ -176,7 +194,7 @@ Hash: 6f838ce34ea57d28eaf08709680a5501
 Package: irlba
 Source: CRAN
 Version: 2.3.2
-Hash: c146942a3224e1facce39750bba1fd0e
+Hash: d74276ec87d16798fa5f0d7a323fb58b
 
 Package: jsonlite
 Source: CRAN
@@ -188,6 +206,11 @@ Source: CRAN
 Version: 1.20
 Hash: 9c6b215d1d02b97586c8232e94533e6a
 Requires: evaluate, highr, markdown, stringr, yaml
+
+Package: labeling
+Source: CRAN
+Version: 0.3
+Hash: ecf589b42cd284b03a4beb9665482d3e
 
 Package: lazyeval
 Source: CRAN
@@ -229,6 +252,12 @@ Source: CRAN
 Version: 0.5
 Hash: 463550cf44fb6f0a2359368f42eebe62
 
+Package: munsell
+Source: CRAN
+Version: 0.4.3
+Hash: f96d896947fcaf9b6d0074002e9f4f9d
+Requires: colorspace
+
 Package: openssl
 Source: CRAN
 Version: 1.0.1
@@ -259,6 +288,12 @@ Source: CRAN
 Version: 0.1-1
 Hash: fb19215402e2d9f1c7f803dcaa806fc2
 
+Package: plyr
+Source: CRAN
+Version: 1.8.4
+Hash: 02588dd72bf343b964fa2fe450e0cf96
+Requires: Rcpp
+
 Package: praise
 Source: CRAN
 Version: 1.0.0
@@ -281,6 +316,12 @@ Source: CRAN
 Version: 2.0.1
 Hash: b7f86a340a404c69cfb770dfd2081dd9
 Requires: tibble
+
+Package: reshape2
+Source: CRAN
+Version: 1.4.3
+Hash: d97526fe6578cabf71bb7688c601b4ba
+Requires: Rcpp, plyr, stringr
 
 Package: rex
 Source: CRAN
@@ -310,6 +351,13 @@ Package: rstudioapi
 Source: CRAN
 Version: 0.7
 Hash: e2ebaff8160aff3e6b32e6e78a693c2d
+
+Package: scales
+Source: CRAN
+Version: 0.5.0
+Hash: 671f5636c97d798fd738f04a847900de
+Requires: R6, RColorBrewer, Rcpp, dichromat, labeling, munsell, plyr,
+    viridisLite
 
 Package: stringdist
 Source: CRAN
@@ -362,15 +410,16 @@ GithubRepo: usethis
 GithubUsername: r-lib
 GithubRef: master
 GithubSha1: 59b083779c142242ed5291242b72f41822996000
-RemoteHost: https://api.github.com
-RemoteRepo: usethis
-RemoteUsername: r-lib
-RemoteSha: 59b083779c142242ed5291242b72f41822996000
 
 Package: utf8
 Source: CRAN
 Version: 1.1.3
 Hash: a2fe6a996668ee5850b7719f365e831b
+
+Package: viridisLite
+Source: CRAN
+Version: 0.3.0
+Hash: 78bb072c4f9e729a283d4c40ec93f9c6
 
 Package: whisker
 Source: CRAN

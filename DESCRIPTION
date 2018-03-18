@@ -16,4 +16,6 @@ Imports:
     assertthat,
     dplyr,
     fs,
+    grid,
+    ggplot2,
     magrittr
