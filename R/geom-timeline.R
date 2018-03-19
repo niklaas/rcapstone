@@ -5,26 +5,37 @@
 GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
   required_aes = c("x", "y"),
   default_aes = ggplot2::aes(colour = "black", fill = "black", size = 1, alpha = .5),
-  draw_key = ggplot2::draw_key_point,
+  draw_key = ggplot2::draw_key_polygon,
 
   draw_panel = function(data, panel_scales, coord) {
     coords <- coord$transform(data, panel_scales)
 
-    # TODO: Implement xmin and xmax
+    # TODO: Implement xmin and xmax properly
+    xmin <- min(coords$x)
+    xmax <- max(coords$x)
 
-    # TODO: Plot grey line that connects centroids of circles
+    # Grey lines that connect centroids of circles
+    baselines <- purrr::map(unique(coords$y),
+                            ~ grid::polylineGrob(x = c(xmin, xmax),
+                                                 y = rep(., times = 2),
+                                                 id = rep(., times = 2),
+                                                 gp = grid::gpar(
+                                                   col = "black"
+                                                 )))
 
-    grid::pointsGrob(
-      x = coords$x,
-      y = coords$y,
-      pch = 21,  # filled circle with border
-      size = grid::unit(coords$size, "char"),
-      gp = grid::gpar(
-        col = coords$colour,
-        fill = coords$fill,
-        alpha = coords$alpha
-      )
-    )
+    circles <- grid::pointsGrob(
+                x = coords$x,
+                y = coords$y,
+                pch = 21,  # filled circle with border
+                size = grid::unit(coords$size, "char"),
+                gp = grid::gpar(
+                  col = coords$colour,
+                  fill = coords$fill,
+                  alpha = coords$alpha
+                )
+              )
+
+    grid::gTree(children = purrr::invoke(grid::gList, c(baselines, list(circles))))
   }
 )
 
