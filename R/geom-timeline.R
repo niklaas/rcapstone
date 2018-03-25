@@ -12,7 +12,7 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
 
     # TODO: Implement xmin and xmax properly
     xmin <- min(coords$x)
-    xmax <- max(coords$x)
+                            ~ grid::polylineGrob(x = c(min(coords$x), max(coords$x)),
 
     # Grey lines that connect centroids of circles
     baselines <- purrr::map(unique(coords$y),
