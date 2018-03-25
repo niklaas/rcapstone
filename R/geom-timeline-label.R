@@ -32,6 +32,8 @@ GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel", ggplot2::Geom,
                         ~ grid::textGrob(label = ..1,
                                          x = ..2,
                                          y = coords$y[1] * multiplier,
+                                         just = c("left", "bottom"),
+                                         rot = 45,
                                          gp = grid::gpar(
                                            fontsize = coords$fontsize[1]
                                          )))
