@@ -3,20 +3,22 @@
 #   https://cran.r-project.org/web/packages/ggplot2/vignettes/extending-ggplot2.html
 
 GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
-  required_aes = c("x", "y"),
-  default_aes = ggplot2::aes(colour = "black", fill = "black", size = 1, alpha = .5),
-  draw_key = ggplot2::draw_key_polygon,
+  required_aes = c("x"),
+  default_aes = ggplot2::aes(y = .5,
+                             colour = "black",
+                             shape = 21,  # filled circle with border
+                             fill = "black",
+                             stroke = 1,
+                             size = 1,
+                             alpha = .5),
+  draw_key = ggplot2::draw_key_point,
 
   draw_panel = function(data, panel_scales, coord) {
     coords <- coord$transform(data, panel_scales)
 
-    # TODO: Implement xmin and xmax properly
-    xmin <- min(coords$x)
-                            ~ grid::polylineGrob(x = c(min(coords$x), max(coords$x)),
-
     # Grey lines that connect centroids of circles
     baselines <- purrr::map(unique(coords$y),
-                            ~ grid::polylineGrob(x = c(xmin, xmax),
+                            ~ grid::polylineGrob(x = c(min(coords$x), max(coords$x)),
                                                  y = rep(., times = 2),
                                                  id = rep(., times = 2),
                                                  gp = grid::gpar(
@@ -26,8 +28,8 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
     circles <- grid::pointsGrob(
                 x = coords$x,
                 y = coords$y,
-                pch = 21,  # filled circle with border
-                size = grid::unit(coords$size, "char"),
+                pch = coords$shape,
+                size = grid::unit(scales::rescale(coords$size, to = c(0, 2)), "char"),
                 gp = grid::gpar(
                   col = coords$colour,
                   fill = coords$fill,
