@@ -3,11 +3,12 @@
 #   https://cran.r-project.org/web/packages/ggplot2/vignettes/extending-ggplot2.html
 
 GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel", ggplot2::Geom,
-  required_aes = c("x", "label", "size"),
+  required_aes = c("x", "label"),
   default_aes = ggplot2::aes(y = .5,
                              colour = "black",
                              n_max = 3,
-                             fontsize = 12),
+                             fontsize = 12,
+                             size = 1),
   draw_key = ggplot2::draw_key_blank,
 
   draw_panel = function(data, panel_scales, coord) {
