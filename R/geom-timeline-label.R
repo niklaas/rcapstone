@@ -14,7 +14,7 @@ GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel", ggplot2::Geom,
   draw_panel = function(data, panel_scales, coord) {
     coords <- coord$transform(data, panel_scales)
 
-    coords <- dplyr::arrange(coords, size)[1:coords$n_max[1], ]
+    coords <- dplyr::arrange(coords, dplyr::desc(size))[1:coords$n_max[1], ]
 
     # For distance between centroids and text labels
     multiplier <- 1.2
