@@ -17,8 +17,8 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
     coords <- coord$transform(data, panel_scales)
 
     # NOTE: I don't implement neither xmin nor xmax here. I think this should be
-    # done by providing an appropriate data.frame to geom_timeline() in the
-    # first place.
+    # done by providing an appropriate data.frame to geom_timeline() that
+    # filters in the first place.
 
     # Grey lines that connect centroids of circles
     baselines <- purrr::map(unique(coords$y),
