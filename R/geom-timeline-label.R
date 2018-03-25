@@ -15,13 +15,10 @@ GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel", ggplot2::Geom,
 
     coords <- dplyr::arrange(coords, size)[1:coords$n_max[1], ]
 
-    str(coords)
-
     # For distance between centroids and text labels
     multiplier <- 1.2
 
     # Grey lines that connect centroids with text
-    # TODO: multiple Ys when there are multiple timelines on y axis
     lines <- grid::polylineGrob(x = rep(coords$x, times = 2),
                                 y = c(coords$y, coords$y * multiplier),
                                 id = rep(1:length(coords$y), times = 2),
