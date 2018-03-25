@@ -1,6 +1,7 @@
 .Rproj.user
 .Rhistory
 .RData
+inst/doc
 packrat/lib*/
 
 #### joe made this: http://goel.io/joe
