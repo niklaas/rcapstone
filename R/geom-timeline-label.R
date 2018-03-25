@@ -27,11 +27,10 @@ GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel", ggplot2::Geom,
                                 id = rep(1:length(coords$y), times = 2),
                                 gp = grid::gpar(col = "black"))
 
-    text <- purrr::map2(coords$label,
-                        coords$x,
+    text <- purrr::pmap(list(coords$label, coords$x, seq_along(coords$label)),
                         ~ grid::textGrob(label = ..1,
                                          x = ..2,
-                                         y = coords$y[1] * multiplier,
+                                         y = coords$y[..3] * multiplier,
                                          just = c("left", "bottom"),
                                          rot = 45,
                                          gp = grid::gpar(
