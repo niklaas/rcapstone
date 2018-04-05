@@ -33,11 +33,11 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
                 x = coords$x,
                 y = coords$y,
                 pch = coords$shape,
-                size = grid::unit(scales::rescale(coords$size, to = c(1, 3)), "char"),
                 gp = grid::gpar(
+                  alpha = coords$alpha,
                   col = coords$colour,
                   fill = coords$fill,
-                  alpha = coords$alpha
+                  fontsize = coords$size * ggplot2::.pt + coords$stroke * ggplot2::.stroke /2
                 )
               )
 
