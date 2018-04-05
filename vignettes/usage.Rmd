@@ -12,17 +12,17 @@ erruptions <- noaa_data %>%
   dplyr::mutate(EQ_MAG_ML = replace(EQ_MAG_ML, is.na(EQ_MAG_ML), 0))
 
 str(erruptions[c("location", "COUNTRY", "date", "EQ_MAG_ML", "DEATHS")])
+```
 
+### Visualisation tools: ggplot2 timeline
+
+```{R}
 ggplot2::ggplot(erruptions,
                 mapping = ggplot2::aes(x = date,
                                        y = COUNTRY,
                                        size = EQ_MAG_ML,
                                        fill = DEATHS)) +
   geom_timeline() +
-  geom_timeline_label(ggplot2::aes(label = location, n_max = 10)) +
-  ggplot2::theme_minimal() +
-  ggplot2::theme(legend.position = "bottom")
-```eom_timeline() +
   geom_timeline_label(ggplot2::aes(label = location, n_max = 10)) +
   ggplot2::theme_minimal() +
   ggplot2::theme(legend.position = "bottom")
