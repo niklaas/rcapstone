@@ -1,5 +1,8 @@
 ## Usage notes
 
+Instead of repeatedly reading in the original data, I included an already cleaned
+version of the raw data as `noaa_data` in this package.
+
 ```{R}
 devtools::load_all()
 
@@ -19,4 +22,29 @@ ggplot2::ggplot(erruptions,
   geom_timeline_label(ggplot2::aes(label = location, n_max = 10)) +
   ggplot2::theme_minimal() +
   ggplot2::theme(legend.position = "bottom")
+```eom_timeline() +
+  geom_timeline_label(ggplot2::aes(label = location, n_max = 10)) +
+  ggplot2::theme_minimal() +
+  ggplot2::theme(legend.position = "bottom")
 ```
+
+### Mapping tools: leaflet map
+
+```{R}
+noaa_data %>%
+  dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(date) >= 2000) %>%
+  eq_map(annot_col = date)
+```
+
+As you can see there is a slight difference to how `eq_map()` is called compared
+to the original task description. Instead of providing the argument `annot_col`
+as string, in my version it can be provided in [tidyeval][tidyeval]-style.
+
+```{R}
+noaa_data %>%
+  dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(date) >= 2000) %>%
+  dplyr::mutate(popup_text = eq_create_label(.)) %>%
+  eq_map(annot_col = popup_text)
+```
+
+[tidyeval]: https://cran.r-project.org/web/packages/dplyr/vignettes/programming.html

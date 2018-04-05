@@ -19,8 +19,10 @@ Imports:
     assertthat,
     dplyr,
     fs,
-    grid,
     ggplot2,
+    grid,
+    htmltools,
+    leaflet,
     magrittr,
     rlang,
     scales
