@@ -1,0 +1,8 @@
+YEAR: 2018
+COPYRIGHT HOLDER: Niklaas Baudet von Gersdorff
+
+Excluding data provided in folder data-raw, as this is content provided by the
+NOAA Significant Earthquake Database at [1]. Obviously, their license applies to
+the provided data.
+
+1: https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&s=1&d=1
