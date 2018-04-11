@@ -1,34 +1,67 @@
 ## Usage notes
 
-Instead of repeatedly reading in the original data, I included an already cleaned
-version of the raw data as `noaa_data` in this package.
+Instead of repeatedly reading in the original data, I included an already
+cleaned version of the raw data as `noaa_data` in this package. This is
+done in `data/signif-import.R`:
 
 ```{R}
-devtools::load_all()
-
-erruptions <- noaa_data %>%
-  dplyr::filter(date > lubridate::ymd("2000-01-01") & date < lubridate::ymd("2018-01-01")) %>%
-  dplyr::filter(COUNTRY %in% c("CHINA", "USA")) %>%
-  dplyr::mutate(EQ_MAG_ML = replace(EQ_MAG_ML, is.na(EQ_MAG_ML), 0))
-
-str(erruptions[c("location", "COUNTRY", "date", "EQ_MAG_ML", "DEATHS")])
+noaa_data <- eq_clean_data("data-raw/signif.txt")
 ```
 
 ### Visualisation tools: ggplot2 timeline
 
+The following code creates a timeline without annotation.
+
 ```{R}
-ggplot2::ggplot(erruptions,
-                mapping = ggplot2::aes(x = date,
-                                       y = COUNTRY,
-                                       size = EQ_MAG_ML,
-                                       fill = DEATHS)) +
+plot1 <- noaa_data %>%
+  dplyr::filter(date > lubridate::ymd("2000-01-01") & date < lubridate::ymd("2018-01-01")) %>%
+  dplyr::filter(COUNTRY == "USA") %>%
+  ggplot2::ggplot(
+    mapping = ggplot2::aes(
+      x = date,
+      fill = DEATHS,
+      size = EQ_PRIMARY
+    )
+  ) +
   geom_timeline() +
-  geom_timeline_label(ggplot2::aes(label = location, n_max = 10)) +
-  ggplot2::theme_minimal() +
-  ggplot2::theme(legend.position = "bottom")
+  ggplot2::labs(fill = "# deaths", size = "Richter scale value") +
+  theme_eq()
+
+plot1
 ```
 
+The following codes creates the same timeline with annotation:
+
+```{R}
+plot2 <- plot1 +
+  geom_timeline_label(ggplot2::aes(label = location, n_max = 5))
+
+plot2
+```
+
+```{R}
+plot3 <- noaa_data %>%
+  dplyr::filter(date > lubridate::ymd("2000-01-01") & date < lubridate::ymd("2018-01-01")) %>%
+  dplyr::filter(COUNTRY %in% c("USA", "CHINA")) %>%
+  ggplot2::ggplot(
+    mapping = ggplot2::aes(
+      x = date,
+      y = COUNTRY,
+      fill = DEATHS
+    )
+  ) +
+  geom_timeline() +
+  ggplot2::labs(fill = "# deaths") +
+  geom_timeline_label(ggplot2::aes(size = EQ_PRIMARY, label = location, n_max = 5)) +
+  ggplot2::scale_size_continuous(guide = FALSE) +
+  theme_eq()
+
+  plot3
+  ```
+
 ### Mapping tools: leaflet map
+
+The following plots the first map that produces simple pop-ups.
 
 ```{R}
 noaa_data %>%
