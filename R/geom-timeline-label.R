@@ -40,6 +40,16 @@ GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel", ggplot2::Geom,
   }
 )
 
+#' Create labels for timeline
+#'
+#' @inheritParams ggplot2::geom_point
+#' @param n_max The maximum number of labels that should be plotted as integer with length 1.
+#' @export
+#' @examples
+#' library(ggplot2)
+#' ggplot2(noaa_data, aes(x = date, size = EQ_PRIMARY, n_max = 5)) +
+#'   geom_timeline() +
+#'   geom_timeline_label()
 geom_timeline_label <- function(mapping = NULL, data = NULL, stat = "identity",
                           position = "identity", na.rm = FALSE, show.legend = NA,
                           inherit.aes = TRUE, ...) {

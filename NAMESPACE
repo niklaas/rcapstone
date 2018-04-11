@@ -2,6 +2,11 @@
 
 export("%>%")
 export(eq_clean_data)
+export(eq_create_label)
+export(eq_map)
+export(geom_timeline)
+export(geom_timeline_label)
+export(theme_eq)
 import(assertthat)
 importFrom(magrittr,"%>%")
 importFrom(rlang,enquo)

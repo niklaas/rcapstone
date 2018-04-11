@@ -1,3 +1,12 @@
+#' Minimal theme for timeline with earthquakes
+#'
+#' @inheritParams ggplot2::theme_minimal
+#' @export
+#' @examples
+#' library(ggplot2)
+#' ggplot2(noaa_data, aes(x = date, size = EQ_PRIMARY, n_max = 5)) +
+#'   geom_timeline() +
+#'   theme_eq()
 theme_eq <- function(...) {
   ggplot2::theme_minimal(...) +
     ggplot2::theme(

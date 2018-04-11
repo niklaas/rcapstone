@@ -2,9 +2,11 @@
 #'
 #' @param x A data.frame that contains earthquake data by NOAA and was cleaned
 #'   with eq_clean_data()
-#'
 #' @return A character vector holding the contents of a pop-up for each
 #'   earthquake formatted as HTML
+#' @export
+#' @examples
+#' labels <- eq_create_label(noaa_data)
 eq_create_label <- function(x) {
   assert_that(
     has_name(x, "location"),

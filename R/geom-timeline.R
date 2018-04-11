@@ -45,6 +45,14 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
   }
 )
 
+#' Create timeline of earthquakes
+#'
+#' @inheritParams ggplot2::geom_point
+#' @export
+#' @examples
+#' library(ggplot2)
+#' ggplot2(noaa_data, aes(x = date, size = EQ_PRIMARY, n_max = 5)) +
+#'   geom_timeline()
 geom_timeline <- function(mapping = NULL, data = NULL, stat = "identity",
                           position = "identity", na.rm = FALSE, show.legend = NA,
                           inherit.aes = TRUE, ...) {

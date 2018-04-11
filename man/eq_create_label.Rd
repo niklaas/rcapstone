@@ -17,3 +17,6 @@ A character vector holding the contents of a pop-up for each
 \description{
 Create pop-up label for map
 }
+\examples{
+labels <- eq_create_label(noaa_data)
+}

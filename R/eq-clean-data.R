@@ -2,8 +2,9 @@
 #' 
 #' @param path The path to the raw \code{signif.txt} file as string
 #' @return A tibble containing a cleaned data frame of the raw file
-#'
 #' @export
+#' @examples
+#' noaa_data <- eq_clean_data("data-raw/signif.txt")
 eq_clean_data <- function(path) {
   assert_that(
     is.string(path),

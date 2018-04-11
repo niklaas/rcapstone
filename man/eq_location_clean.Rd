@@ -6,7 +6,15 @@
 \usage{
 eq_location_clean(col)
 }
+\arguments{
+\item{col}{The column of an uncleaned \code{noaa_data} dataset that contains the locations
+of earthquake erruptions}
+}
+\value{
+A character vector containing a cleaned versioned of the locations
+}
 \description{
-Given the LOCATION_NAME column from a raw NOAA database, this function
-removes the name of the country at the beginning of each entry.
+The locations of earthquake erruptions stored in a \code{noaa_data} dataset
+are separated by colons. This function extracts the third field containing
+the name of the city. The function is only used internally for \code{eq_clean_data()}.
 }
