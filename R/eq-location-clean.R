@@ -6,6 +6,9 @@ eq_location_clean <- function(col) {
   assert_that(
     is.character(col)
   )
-  stringr::str_extract(col, "(?<=:\\s\\s).+") %>%
+  stringr::str_split(col, ":") %>%
+    purrr::map_chr(~ .[length(.)]) %>%
+    stringr::str_replace("^\\s+", "") %>%
+    stringr::str_replace("\\s+$", "") %>%
     stringr::str_to_title()
 }
