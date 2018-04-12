@@ -9,7 +9,7 @@
 #' labels <- eq_create_label(noaa_data)
 eq_create_label <- function(x) {
   assert_that(
-    has_name(x, "location"),
+    has_name(x, "LOCATION"),
     has_name(x, "EQ_PRIMARY"),
     has_name(x, "TOTAL_DEATHS")
   )
@@ -31,9 +31,9 @@ eq_create_label <- function(x) {
   }
 
   purrr::pmap_chr(x,
-    function(location, EQ_PRIMARY, TOTAL_DEATHS, ...) {
+    function(LOCATION, EQ_PRIMARY, TOTAL_DEATHS, ...) {
       markup_popup(c(
-        markup_line("Location", htmltools::htmlEscape(location)),
+        markup_line("Location", htmltools::htmlEscape(LOCATION)),
         markup_line("Magnitude", htmltools::htmlEscape(EQ_PRIMARY)),
         markup_line("Total deaths", htmltools::htmlEscape(TOTAL_DEATHS))
       ))

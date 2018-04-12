@@ -51,8 +51,8 @@ eq_clean_data <- function(path) {
 
   .data <- .data %>%
     dplyr::mutate(
-      date = parse_bc_dates(YEAR, MONTH, DAY),
-      location = eq_location_clean(LOCATION_NAME)
+      DATE = parse_bc_dates(YEAR, MONTH, DAY),
+      LOCATION = eq_location_clean(LOCATION_NAME)
     ) %>%
     dplyr::select(-YEAR, -MONTH, -DAY, -LOCATION_NAME)
 

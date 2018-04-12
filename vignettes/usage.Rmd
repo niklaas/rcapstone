@@ -14,11 +14,11 @@ The following code creates a timeline without annotation.
 
 ```{R}
 plot1 <- noaa_data %>%
-  dplyr::filter(date > lubridate::ymd("2000-01-01") & date < lubridate::ymd("2018-01-01")) %>%
+  dplyr::filter(DATE > lubridate::ymd("2000-01-01") & DATE < lubridate::ymd("2018-01-01")) %>%
   dplyr::filter(COUNTRY == "USA") %>%
   ggplot2::ggplot(
     mapping = ggplot2::aes(
-      x = date,
+      x = DATE,
       fill = DEATHS,
       size = EQ_PRIMARY
     )
@@ -34,25 +34,25 @@ The following codes creates the same timeline with annotation:
 
 ```{R}
 plot2 <- plot1 +
-  geom_timeline_label(ggplot2::aes(label = location, n_max = 5))
+  geom_timeline_label(ggplot2::aes(label = LOCATION, n_max = 5))
 
 plot2
 ```
 
 ```{R}
 plot3 <- noaa_data %>%
-  dplyr::filter(date > lubridate::ymd("2000-01-01") & date < lubridate::ymd("2018-01-01")) %>%
+  dplyr::filter(DATE > lubridate::ymd("2000-01-01") & DATE < lubridate::ymd("2018-01-01")) %>%
   dplyr::filter(COUNTRY %in% c("USA", "CHINA")) %>%
   ggplot2::ggplot(
     mapping = ggplot2::aes(
-      x = date,
+      x = DATE,
       y = COUNTRY,
       fill = DEATHS
     )
   ) +
   geom_timeline() +
   ggplot2::labs(fill = "# deaths") +
-  geom_timeline_label(ggplot2::aes(size = EQ_PRIMARY, label = location, n_max = 5)) +
+  geom_timeline_label(ggplot2::aes(size = EQ_PRIMARY, label = LOCATION, n_max = 5)) +
   ggplot2::scale_size_continuous(guide = FALSE) +
   theme_eq()
 
@@ -65,8 +65,8 @@ The following plots the first map that produces simple pop-ups.
 
 ```{R}
 noaa_data %>%
-  dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(date) >= 2000) %>%
-  eq_map(annot_col = date)
+  dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(DATE) >= 2000) %>%
+  eq_map(annot_col = DATE)
 ```
 
 As you can see there is a slight difference to how `eq_map()` is called compared
@@ -75,7 +75,7 @@ as string, in my version it can be provided in [tidyeval][tidyeval]-style.
 
 ```{R}
 noaa_data %>%
-  dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(date) >= 2000) %>%
+  dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(DATE) >= 2000) %>%
   dplyr::mutate(popup_text = eq_create_label(.)) %>%
   eq_map(annot_col = popup_text)
 ```
