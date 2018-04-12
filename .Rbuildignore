@@ -4,3 +4,4 @@
 ^data-raw$
 ^\.Rprofile$
 ^\worksheet.R$
+^\.travis\.yml$

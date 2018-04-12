@@ -1,3 +1,4 @@
+[![Travis-CI Build Status](https://travis-ci.org/niklaas/rcapstone.svg?branch=master)](https://travis-ci.org/niklaas/rcapstone)
 # rcapstone
 
 The goal of rcapstone is for me to pass the [Coursera Capstone
