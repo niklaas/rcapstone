@@ -1,7 +1,29 @@
-# Template taken from
-#
-#   https://cran.r-project.org/web/packages/ggplot2/vignettes/extending-ggplot2.html
+#' Create labels for timeline
+#'
+#' @inheritParams ggplot2::geom_point
+#' @section Aesthetics: `n_max` is the maximum number of labels that should
+#'   be plotted as integer with length 1.
+#' @export
+#' @examples
+#' \dontrun{
+#' library(ggplot2)
+#' ggplot(noaa_data, aes(x = date, size = EQ_PRIMARY, n_max = 5)) +
+#'   geom_timeline() +
+#'   geom_timeline_label()
+#' }
+geom_timeline_label <- function(mapping = NULL, data = NULL, stat = "identity",
+                          position = "identity", na.rm = FALSE, show.legend = NA,
+                          inherit.aes = TRUE, ...) {
+  ggplot2::layer(
+    geom = GeomTimelineLabel, mapping = mapping, data = data, stat = stat,
+    position = position, show.legend = show.legend, inherit.aes = inherit.aes,
+    params = list(na.rm = na.rm, ...)
+  )
+}
 
+#' @rdname geom_timeline_label
+#' @keywords internal
+#' @export
 GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel", ggplot2::Geom,
   required_aes = c("x", "label"),
   default_aes = ggplot2::aes(y = .5,
@@ -39,23 +61,3 @@ GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel", ggplot2::Geom,
     grid::gTree(children = purrr::invoke(grid::gList, c(list(lines), text)))
   }
 )
-
-#' Create labels for timeline
-#'
-#' @inheritParams ggplot2::geom_point
-#' @param n_max The maximum number of labels that should be plotted as integer with length 1.
-#' @export
-#' @examples
-#' library(ggplot2)
-#' ggplot2(noaa_data, aes(x = date, size = EQ_PRIMARY, n_max = 5)) +
-#'   geom_timeline() +
-#'   geom_timeline_label()
-geom_timeline_label <- function(mapping = NULL, data = NULL, stat = "identity",
-                          position = "identity", na.rm = FALSE, show.legend = NA,
-                          inherit.aes = TRUE, ...) {
-  ggplot2::layer(
-    geom = GeomTimelineLabel, mapping = mapping, data = data, stat = stat,
-    position = position, show.legend = show.legend, inherit.aes = inherit.aes,
-    params = list(na.rm = na.rm, ...)
-  )
-}

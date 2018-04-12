@@ -17,3 +17,5 @@ eq_location_clean <- function(col) {
     stringr::str_replace("\\s+$", "") %>%
     stringr::str_to_title()
 }
+
+globalVariables(c("."))

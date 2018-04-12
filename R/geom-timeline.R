@@ -1,7 +1,26 @@
-# Template taken from
-#
-#   https://cran.r-project.org/web/packages/ggplot2/vignettes/extending-ggplot2.html
+#' Create timeline of earthquakes
+#'
+#' @inheritParams ggplot2::geom_point
+#' @export
+#' @examples
+#' \dontrun{
+#' library(ggplot2)
+#' ggplot(noaa_data, aes(x = DATE, size = EQ_PRIMARY, n_max = 5)) +
+#'   geom_timeline()
+#' }
+geom_timeline <- function(mapping = NULL, data = NULL, stat = "identity",
+                          position = "identity", na.rm = FALSE, show.legend = NA,
+                          inherit.aes = TRUE, ...) {
+  ggplot2::layer(
+    geom = GeomTimeline, mapping = mapping, data = data, stat = stat,
+    position = position, show.legend = show.legend, inherit.aes = inherit.aes,
+    params = list(na.rm = na.rm, ...)
+  )
+}
 
+#' @rdname geom_timeline
+#' @keywords internal
+#' @export
 GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
   required_aes = c("x"),
   default_aes = ggplot2::aes(y = .5,
@@ -44,21 +63,3 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
     grid::gTree(children = purrr::invoke(grid::gList, c(baselines, list(circles))))
   }
 )
-
-#' Create timeline of earthquakes
-#'
-#' @inheritParams ggplot2::geom_point
-#' @export
-#' @examples
-#' library(ggplot2)
-#' ggplot2(noaa_data, aes(x = date, size = EQ_PRIMARY, n_max = 5)) +
-#'   geom_timeline()
-geom_timeline <- function(mapping = NULL, data = NULL, stat = "identity",
-                          position = "identity", na.rm = FALSE, show.legend = NA,
-                          inherit.aes = TRUE, ...) {
-  ggplot2::layer(
-    geom = GeomTimeline, mapping = mapping, data = data, stat = stat,
-    position = position, show.legend = show.legend, inherit.aes = inherit.aes,
-    params = list(na.rm = na.rm, ...)
-  )
-}

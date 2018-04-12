@@ -4,7 +4,9 @@
 #' @return A tibble containing a cleaned data frame of the raw file
 #' @export
 #' @examples
+#' \donttest{
 #' noaa_data <- eq_clean_data("data-raw/signif.txt")
+#' }
 eq_clean_data <- function(path) {
   assert_that(
     is.string(path),
@@ -58,3 +60,5 @@ eq_clean_data <- function(path) {
 
   .data
 }
+
+globalVariables(c("YEAR", "MONTH", "DAY", "LOCATION_NAME"))

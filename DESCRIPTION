@@ -14,16 +14,22 @@ LazyData: true
 RoxygenNote: 6.0.1
 Suggests: knitr,
     rmarkdown,
-    testthat
+    testthat,
+    vdiffr
 VignetteBuilder: knitr
 Imports:
     assertthat,
     dplyr,
     fs,
     ggplot2,
+    glue,
     grid,
     htmltools,
     leaflet,
+    lubridate,
     magrittr,
+    purrr,
+    readr,
     rlang,
-    scales
+    scales,
+    stringr

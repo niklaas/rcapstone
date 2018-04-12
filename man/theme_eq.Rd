@@ -6,12 +6,17 @@
 \usage{
 theme_eq(...)
 }
+\arguments{
+\item{...}{All options piped to \code{ggplot2::theme_minimal()}}
+}
 \description{
 Minimal theme for timeline with earthquakes
 }
 \examples{
+\dontrun{
 library(ggplot2)
-ggplot2(noaa_data, aes(x = date, size = EQ_PRIMARY, n_max = 5)) +
+ggplot(noaa_data, aes(x = date, size = EQ_PRIMARY, n_max = 5)) +
   geom_timeline() +
   theme_eq()
+}
 }

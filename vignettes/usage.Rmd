@@ -31,6 +31,9 @@ noaa_data <- eq_clean_data("data-raw/signif.txt")
 The following code creates a timeline without annotation.
 
 ```{R}
+library(rcapstone)
+library(dplyr)  # for pipe
+
 plot1 <- noaa_data %>%
   dplyr::filter(DATE > lubridate::ymd("2000-01-01") & DATE < lubridate::ymd("2018-01-01")) %>%
   dplyr::filter(COUNTRY == "USA") %>%
@@ -48,7 +51,7 @@ plot1 <- noaa_data %>%
 plot1
 ```
 
-The following codes creates the same timeline with annotation:
+The following code creates the same timeline with annotation:
 
 ```{R}
 plot2 <- plot1 +

@@ -7,7 +7,7 @@
 eq_map(x, annot_col)
 }
 \arguments{
-\item{x}{A data.frame that contains earthquake data by NOAA and was cleaned '
+\item{x}{A data.frame that contains earthquake data by NOAA and was cleaned
 with eq_clean_data()}
 
 \item{annot_col}{Unquoted name of column in \code{x} that holds text for pop-ups}
@@ -20,5 +20,5 @@ A leaflet map created by leaflet::leaflet that indicates each
 Create map with earthquakes
 }
 \examples{
-eq_map(noaa_data, annot_col = date)
+eq_map(noaa_data, annot_col = DATE)
 }

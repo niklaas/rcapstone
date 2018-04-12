@@ -16,5 +16,7 @@ A tibble containing a cleaned data frame of the raw file
 Clean raw NOAA data
 }
 \examples{
+\donttest{
 noaa_data <- eq_clean_data("data-raw/signif.txt")
+}
 }
