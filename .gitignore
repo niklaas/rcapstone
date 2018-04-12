@@ -2,7 +2,6 @@
 .Rhistory
 .RData
 inst/doc
-packrat/lib*/
 
 #### joe made this: http://goel.io/joe
 
@@ -12,4 +11,3 @@ packrat/lib*/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-packrat/src/
