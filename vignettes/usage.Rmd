@@ -1,10 +1,28 @@
+---
+title: "Usage"
+author: "Niklaas Baudet von Gersdorff"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
 ## Usage notes
 
 Instead of repeatedly reading in the original data, I included an already
 cleaned version of the raw data as `noaa_data` in this package. This is
 done in `data/signif-import.R`:
 
-```{R}
+```{R, eval = FALSE}
 noaa_data <- eq_clean_data("data-raw/signif.txt")
 ```
 
